@@ -77,4 +77,7 @@ A few more parameters in constants.ConstantsSoftConst:
 
 For each type pair, like person#location, there is a file person#location_sim.txt which has the predicate similarities. For each predicate, its local and global similarities to other predicates are listed.
 
-<!---Step 7**: Please follow the instructions outlined in xxx to test the graphs on the entailment datasets. -->
+**Step 8**: Please follow the instructions outlined in https://github.com/mjhosseini/entgraph_eval to evaluate the graphs on the entailment datasets.
+
+
+
