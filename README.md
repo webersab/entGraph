@@ -1,7 +1,7 @@
 <div class=figure>
   <p align="center"><img src="https://homepages.inf.ed.ac.uk/s1583634/images/toy_tacl2018.jpg"
     width="300" height=auto></p>
-  <p align="center"><small><i>Examples of typed entailment graphs for arguments of types company,company and person,location.</i></small></p>
+  <p align="center"><small><i>Figure 1. Examples of typed entailment graphs for arguments of types company,company and person,location.</i></small></p>
 </div>
 
 This codebase contains the implementation for the following paper:
