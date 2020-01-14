@@ -86,4 +86,18 @@ For each type pair, like person#location, there is a file person#location_sim.tx
 **Step 8**: Please follow the instructions outlined in https://github.com/mjhosseini/entgraph_eval to evaluate the graphs on the entailment datasets.
 
 
+### Citation
+
+If you found this codebase useful, please cite:
+
+    @article{javad2018learning,
+    title={Learning typed entailment graphs with global soft constraints},
+    author={Javad Hosseini, Mohammad and Chambers, Nathanael and Reddy, Siva and Holt, Xavier R and Cohen, Shay B and Johnson,  Mark and Steedman, Mark},
+    journal={Transactions of the Association for Computational Linguistics},
+    volume={6},
+    pages={703--717},
+    year={2018},
+    publisher={MIT Press}
+    }
+
 
