@@ -1,4 +1,10 @@
-This is the implementation for the following paper:
+<div class=figure>
+  <p align="center"><img src="https://homepages.inf.ed.ac.uk/s1583634/images/toy_tacl2018.jpg"
+    width="300" height=auto></p>
+  <p align="center"><small><i>Examples of typed entailment graphs for arguments of types company,company and person,location.</i></small></p>
+</div>
+
+This codebase contains the implementation for the following paper:
 
 **Learning Typed Entailment Graphs with Global Soft Constraints**, *Mohammad Javad Hosseini, Nathanael Chambers, Siva Reddy, Xavier Holt, Shay B. Cohen, Mark Johnson, and Mark Steedman. Transactions of the Association for Computational Linguistics (TACL 2018).* [[paper]](https://www.mitpressjournals.org/doi/pdfplus/10.1162/tacl_a_00250)
 
