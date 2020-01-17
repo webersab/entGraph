@@ -68,7 +68,6 @@ java -Xmx100G -cp lib/*:bin  entailment.vector.EntailGraphFactoryAggregator
 
   1. featName is the feature name to be used, which is by default BINC score.
   2. root is the folder address storing the output of step 5.
-  3. constants.ConstantsSoftConst:
 
 A few more parameters in constants.ConstantsSoftConst:
 
