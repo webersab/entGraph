@@ -1,7 +1,7 @@
 <div class=figure>
   <p align="center"><img src="https://homepages.inf.ed.ac.uk/s1583634/paper_images/toy_tacl2018.png"
     width="450" height=auto></p>
-  <p align="center"><small><i>Figure 1. Examples of typed entailment graphs for arguments of types company,company and person,location.</i></small></p>
+  <p align="center"><small><i>Figure 1. Learning entailments that are consistent (A) across different but related typed entailment graphs and (B) within each graph. 0≤β≤1 determines how much different graphs are related. The dotted edges are missing, but will be recovered by considering relationships shown by across-graph (red) and within-graph (light blue) connections.</i></small></p>
 </div>
 
 This codebase contains the implementation for the following paper:
