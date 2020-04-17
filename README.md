@@ -27,7 +27,7 @@ Please follow the below instructions to create entailment graphs and/or replicat
    
 **Step 4.2**: Split the input json file line by line: run entailment.Util.convertReleaseToRawJson(inputJsonAddress) 1>rawJsonAddress (by changing Util's main function), where inputJsonAddress should be by default "data/release/crawlbatched". Run the code as:
 
-    java -cp lib/*:bin entailment.Util "data/release/crawl" 1>news_raw.json
+    java -cp lib/*:bin entailment.Util data/release/crawl 1>news_raw.json
 
 **Step 4.3**: Extract binary relations from the input json file: Run the bash script: `prArgs.sh` (This takes about 12 hours on the servers I used with 20 threads.) Change the input and output paths as necessary inside the bash script. You can find `prArgs.sh` on the codalab page.
 
@@ -49,24 +49,26 @@ The number of threads is a parameter which might need to be changed in constants
 
     java -Xmx100G -cp lib/*:bin entailment.Util predArgs_gen.txt true true 12000000 aida/news_linked.json 1>news_gen.json 2>err.txt &
 
-The input/output arguments are:
+Input/output example argument are:
 
-predArgs_gen.txt: output of step 4.3.
-aida/news_linked.json: output of step 4.4.
-120000000: is an upper bound on the number of lines of the corpus (this might need to be changed for a new corpus).     
-news_gen.json: It contains the linked and parsed NewsSpike corpus. For larger corpora, instead of convertPredArgsToJson, you can use convertPredArgsToJsonUnsorted which will get less memory, but the output isn't sorted (this doesn't change any of the results for this paper).
+* predArgs_gen.txt: output of step 4.3.
+* aida/news_linked.json: output of step 4.4.
+* 120000000: is an upper bound on the number of lines of the corpus (this might need to be changed for a new corpus).     
+* news_gen.json: It contains the linked and parsed NewsSpike corpus.
+
+For larger corpora, instead of convertPredArgsToJson, you can use convertPredArgsToJsonUnsorted which will get less memory, but the output isn't sorted (this doesn't change any of the results for this paper).
 
 **Step 5**: Extract the interim outputs:
 
 You might need to set a few parameters in constants.ConstantsAgg:
 
-  1. minArgPairForPred is C_1 in the paper, which is set to 3 by default.
+* minArgPairForPred is C_1 in the paper, which is set to 3 by default.
 
-  2. minPredForArgPair is C_2 in the paper, which is set to 3 by default.
+* minPredForArgPair is C_2 in the paper, which is set to 3 by default.
 
-  3. relAddress is the output of step 4.
+* relAddress is the output of step 4.
 
-  4. simsFolder is where the final output will be stored.
+* simsFolder is where the final output will be stored.
 
 You need to run the entailment.vector.EntailGraphFactoryAggregator using:
 
@@ -78,14 +80,14 @@ You need to run the entailment.vector.EntailGraphFactoryAggregator using:
 
 A few parameters might need to be set in constants.ConstantsGraphs as follows:
 
-  1. featName is the feature name to be used, which is by default BINC score.
-  2. root is the folder address storing the output of step 5.
+* featName is the feature name to be used, which is by default BINC score.
+* root is the folder address storing the output of step 5.
 
 A few more parameters in constants.ConstantsSoftConst:
 
-  1. numThreads, which I set that to 60 for a machine with 20 cpus, because not all the threads will run together. But you might need to change it.
-  2. numIters is the number of iterations. lambda, lambda_2 and tau are set by default for Cross-Graph + Paraphrase-Resolution global soft constraints experiments, but can be tuned for another dataset.
-  3. tPropSuffix, is the suffix of the new files that store the global scores.
+* numThreads, which I set that to 60 for a machine with 20 cpus, because not all the threads will run together. But you might need to change it.
+* numIters is the number of iterations. lambda, lambda_2 and tau are set by default for Cross-Graph + Paraphrase-Resolution global soft constraints experiments, but can be tuned for another dataset.
+* tPropSuffix, is the suffix of the new files that store the global scores.
   
 **Step 7**: Please follow the instructions outlined in https://github.com/mjhosseini/entgraph_eval to evaluate the graphs on the entailment datasets.
   
