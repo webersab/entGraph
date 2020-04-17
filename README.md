@@ -40,7 +40,8 @@ Example input/output paths:
 The number of threads (numThreads) is a parameter which might need to be changed in constants.ConstantsParsing. Please keep the other parameters unchanged.
 
 Run:
-    sh prArgs.sh
+      
+     sh prArgs.sh
 
 
 **Step 4.4**: Download news_linked.json and put it in folder aida. This is the output of NE linking (In our experiments, we used AIDALight).
