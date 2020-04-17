@@ -40,13 +40,16 @@ example:
 
 **Step 4.4**: Download news_linked.json and put it in folder aida. This is the output of NE linking (In our experiments, we used AIDALight).
 
-**Step 4.5**: Run entailment.Util (function convertPredArgsToJson) with these arguments: predArgs_gen.txt true true 12000000 aida/news_linked.json 1>news_gen.json 2>err.txt &
+**Step 4.5**: Run entailment.Util (change the main function to run convertPredArgsToJson) as follows: 
 
-    predArgs_gen.txt: output of step 4.3.
-    aida/news_linked.json: output of step 4.4.
-    120000000 is an upper bound on the number of lines of the corpus (this might need to be changed for a new corpus). 
-    
-news_gen.json contains the linked and parsed NewsSpike corpus. For larger corpora, instead of convertPredArgsToJson, you can use convertPredArgsToJsonUnsorted which will get less memory, but the output isn't sorted (this doesn't change any of the results for this paper).
+    java -Xmx100G -cp lib/*:bin entailment.Util predArgs_gen.txt true true 12000000 aida/news_linked.json 1>news_gen.json 2>err.txt &
+
+The input/output arguments are:
+
+predArgs_gen.txt: output of step 4.3.
+aida/news_linked.json: output of step 4.4.
+120000000: is an upper bound on the number of lines of the corpus (this might need to be changed for a new corpus).     
+news_gen.json: It contains the linked and parsed NewsSpike corpus. For larger corpora, instead of convertPredArgsToJson, you can use convertPredArgsToJsonUnsorted which will get less memory, but the output isn't sorted (this doesn't change any of the results for this paper).
 
 **Step 5**: Extract the interim outputs:
 
@@ -62,7 +65,7 @@ You might need to set a few parameters in constants.ConstantsAgg:
 
 You need to run the entailment.vector.EntailGraphFactoryAggregator using:
 
-java -Xmx100G -cp lib/*:bin  entailment.vector.EntailGraphFactoryAggregator
+    java -Xmx100G -cp lib/*:bin entailment.vector.EntailGraphFactoryAggregator
 
 **Step 6**: The global learning: Run
 
