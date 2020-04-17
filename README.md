@@ -30,8 +30,6 @@ Please follow the below instructions to create entailment graphs and/or replicat
     java -cp lib/*:bin entailment.Util data/release/crawl 1>news_raw.json
 
 **Step 4.3**: Extract binary relations from the input json file: Run the bash script: `prArgs.sh` (This takes about 12 hours on the servers I used with 20 threads.) Change the input and output paths as necessary inside the bash script. You can find `prArgs.sh` on the codalab page.
-
-    sh prArgs.sh
     
 Example input/output paths:
 
@@ -39,8 +37,10 @@ Example input/output paths:
 * oName1=predArgs_gen.txt (binary relations with at least one Named Entity argument, which is used in our experiments).
 * oName2=predArgs_NE.txt (binary relations with two NE arguments).
 
+The number of threads (numThreads) is a parameter which might need to be changed in constants.ConstantsParsing. Please keep the other parameters unchanged.
 
-The number of threads is a parameter which might need to be changed in constants.ConstantsParsing. Please keep the other parameters unchanged.
+Run:
+    sh prArgs.sh
 
 
 **Step 4.4**: Download news_linked.json and put it in folder aida. This is the output of NE linking (In our experiments, we used AIDALight).
@@ -74,9 +74,7 @@ You need to run the entailment.vector.EntailGraphFactoryAggregator using:
 
     java -Xmx100G -cp lib/*:bin entailment.vector.EntailGraphFactoryAggregator
 
-**Step 6**: The global learning: Run
-
-    java -Xmx220G -cp lib/*:bin graph.softConst.TypePropagateMN.
+**Step 6**: The global learning.
 
 A few parameters might need to be set in constants.ConstantsGraphs as follows:
 
@@ -88,6 +86,10 @@ A few more parameters in constants.ConstantsSoftConst:
 * numThreads, which I set that to 60 for a machine with 20 cpus, because not all the threads will run together. But you might need to change it.
 * numIters is the number of iterations. lambda, lambda_2 and tau are set by default for Cross-Graph + Paraphrase-Resolution global soft constraints experiments, but can be tuned for another dataset.
 * tPropSuffix, is the suffix of the new files that store the global scores.
+
+Run:
+
+    java -Xmx220G -cp lib/*:bin graph.softConst.TypePropagateMN.
   
 **Step 7**: Please follow the instructions outlined in https://github.com/mjhosseini/entgraph_eval to evaluate the graphs on the entailment datasets.
   
