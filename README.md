@@ -64,7 +64,11 @@ You need to run the entailment.vector.EntailGraphFactoryAggregator using:
 
 java -Xmx100G -cp lib/*:bin  entailment.vector.EntailGraphFactoryAggregator
 
-**Step 6**: The global learning: Run graph.softConst.TypePropagateMN. A few parameters might need to be set in constants.ConstantsGraphs as follows:
+**Step 6**: The global learning: Run
+
+    java -Xmx220G -cp lib/*:bin graph.softConst.TypePropagateMN.
+
+A few parameters might need to be set in constants.ConstantsGraphs as follows:
 
   1. featName is the feature name to be used, which is by default BINC score.
   2. root is the folder address storing the output of step 5.
