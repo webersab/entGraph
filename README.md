@@ -17,7 +17,6 @@ Please follow the below instructions to create entailment graphs and/or replicat
 
 
 **Step 1**: Clone the entGraph project.
-
 **Step 2**: Download (and decompress) lib, lib_data and data folders inside the entGraph folder.
 
 **Step 3**: Compile the Java files. In this step, it's assumed a remote machine (server) is used to run the code and a local machine (PC or laptop) is used to compile the code. One way would be to create a project using eclipse in the local machine. To do so, change the workspce directory to the folder containing entGraph. Then, create a project named entGraph (File -> New -> Java Project). From step 2, only the lib folder is needed for compilation. Then, the automatically created bin folder needs to be copied to the server that the code will be executed on. The rest will be done on the remote machine.
@@ -26,7 +25,9 @@ Please follow the below instructions to create entailment graphs and/or replicat
 
 **Step 4.1**: Download the NewsSpike Corpus from http://www.cs.washington.edu/ai/clzhang/release.tar.gz and copy the data folder inside entGraph.
    
-**Step 4.2**: Split the input json file line by line: run entailment.Util.convertReleaseToRawJson(inputJsonAddress) 1>rawJsonAddress (by changing Util's main function), where inputJsonAddress should be by default "data/release/crawlbatched". Run the code as "java -cp lib/*:bin entailment.Util "data/release/crawl" 1>news_raw.json"
+**Step 4.2**: Split the input json file line by line: run entailment.Util.convertReleaseToRawJson(inputJsonAddress) 1>rawJsonAddress (by changing Util's main function), where inputJsonAddress should be by default "data/release/crawlbatched". Run the code as:
+
+    "java -cp lib/*:bin entailment.Util "data/release/crawl" 1>news_raw.json"
 
 **Step 4.3**: Extract binary relations from the input json file: Run the bash script: `prArgs.sh` (This takes about 12 hours on the servers I used with 20 threads.) Change the input and output address as necessary. You can find `prArgs.sh` on the codalab page.
 
