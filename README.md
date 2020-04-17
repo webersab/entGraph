@@ -29,15 +29,19 @@ Please follow the below instructions to create entailment graphs and/or replicat
 
     "java -cp lib/*:bin entailment.Util "data/release/crawl" 1>news_raw.json"
 
-**Step 4.3**: Extract binary relations from the input json file: Run the bash script: `prArgs.sh` (This takes about 12 hours on the servers I used with 20 threads.) Change the input and output address as necessary. You can find `prArgs.sh` on the codalab page.
+**Step 4.3**: Extract binary relations from the input json file: Run the bash script: `prArgs.sh` (This takes about 12 hours on the servers I used with 20 threads.) Change the input and output paths as necessary inside the bash script. You can find `prArgs.sh` on the codalab page.
+
+    sh prArgs.sh
+    
+Example input/output paths:
+
+* fName=news_raw.json
+* oName1=predArgs_gen.txt (binary relations with at least one Named Entity argument, which is used in our experiments).
+* oName2=predArgs_NE.txt (binary relations with two NE arguments).
+
 
 The number of threads is a parameter which might need to be changed in constants.ConstantsParsing. Please keep the other parameters unchanged.
 
-example:
-
-    fName=news_raw.json
-    oName1=predArgs_gen.txt (binary relations with at least one Named Entity argument, which is used in our experiments).
-    oName2=predArgs_NE.txt (binary relations with two NE arguments).
 
 **Step 4.4**: Download news_linked.json and put it in folder aida. This is the output of NE linking (In our experiments, we used AIDALight).
 
