@@ -24,28 +24,22 @@ Please follow the below instructions to create entailment graphs and/or replicat
 
 **Step 4**: You can simply download the linked and parsed NewsSpike corpus (NewsSpike_CCG_parsed.tar.gz) to your preferred location and skip to step 5. For more information on the parsing format, please see parsing_readme.txt. Alternatively, follow steps 4.1 to 4.5 to parse and link the NewsSpike corpus (or your own corpus) into predicate argument structure using the graph-parser (developped by Siva Reddy) based on CCG parser (easyCCG).
 
-**Step 4.1**: Download the NewsSpike Corpus from http://www.cs.washington.edu/ai/clzhang/release.tar.gz and copy the data folder inside entGraph.
+**Step 4.1**: Download the NewsSpike Corpus from http://www.cs.washington.edu/ai/clzhang/release.tar.gz and copy the data folder inside entGraph. Or make sure that your own corpus has the format that is required. Best place to see that is to look at one file from the input to the German pipeline. 
    
-**Step 4.2**: Split the input json file line by line: run entailment.Util.convertReleaseToRawJson(inputJsonAddress) 1>rawJsonAddress (by changing Util's main function), where inputJsonAddress should be by default "data/release/crawlbatched". Run the code as:
+**Step 4.2**: I changed entailment.Util.convertReleaseToRawJson(inputJsonAddress) so that it points to my text. Shall this ever be released to a wider public I will change it to take command line input. It will print the output to news_raw.json. Run the code as:
 
-    java -cp lib/*:bin entailment.Util data/release/crawl 1>news_raw.json
+    entailment.Util 
 
-**Step 4.3**: Extract binary relations from the input json file: Run the bash script: `prArgs.sh` (This takes about 12 hours on the servers I used with 20 threads.) Change the input and output paths as necessary inside the bash script. You can find `prArgs.sh` on the codalab page.
-    
-Example input/output paths:
-
-* fName=news_raw.json
-* oName1=predArgs_gen.txt (binary relations with at least one Named Entity argument, which is used in our experiments).
-* oName2=predArgs_NE.txt (binary relations with two NE arguments).
+**Step 4.3**: Extract binary relations from the input json file: Javad recommends running the bash script prArgs.sh but I couldn't get that to work with my setup. Moreover the output obscures anything going wrong which led to me running this scrip for 24 hours with it actually just spewing errors that I didn't get to see, because the output is just numbers conting up. So, don't do that. Make sure that your input file is still named news_raw.json. 
 
 The number of threads (numThreads) is a parameter which might need to be changed in constants.ConstantsParsing. Please keep the other parameters unchanged.
 
 Run:
       
-     sh prArgs.sh
+     entailment.LinesHandler
 
 
-**Step 4.4**: Download news_linked.json and put it in folder aida. This is the output of NE linking (In our experiments, we used AIDALight).
+**Step 4.4**: Download news_linked.json and put it in folder aida. This is the output of NE linking (In our experiments, we used AIDALight). If you're using your own data, this is the point at which you get a version of Aida light and do the linking yourself. Enjoy. 
 
 **Step 4.5**: Run entailment.Util (change the main function to run convertPredArgsToJson) as follows: 
 
